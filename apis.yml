@@ -1,7 +1,12 @@
 aid: united-technologies
-url: https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/apis.yml
 modified: '2026-03-24'
 apis: []
 common:
   - type: Website
     url: https://www.united-technologies.com
+description: >-
+  United Technologies was an American multinational conglomerate with subsidiaries
+  including Otis Elevator, Carrier, Pratt & Whitney, and Collins Aerospace before
+  merging with Raytheon to form Raytheon Technologies.
