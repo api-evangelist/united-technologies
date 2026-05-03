@@ -1,0 +1,201 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "United Technologies / Collins Aerospace"
+  description: "Unified taxonomy for Collins Aerospace ARINC aviation messaging and operations API."
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - namespace: arinc-messaging
+      version: "1.0"
+      baseUrl: https://api.arinconline.collinsaerospace.com
+      status: active
+
+  resources:
+    - name: messages
+      apis:
+        - arinc-messaging
+      actions:
+        - list
+        - send
+    - name: flights
+      apis:
+        - arinc-messaging
+      actions:
+        - list
+    - name: weather
+      apis:
+        - arinc-messaging
+      actions:
+        - get
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+    - name: get
+      httpMethod: GET
+      pattern: read
+    - name: send
+      httpMethod: POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: Message
+        api: arinc-messaging
+        keyProperties:
+          - messageId
+          - messageType
+          - registration
+          - airlineCode
+          - flightNumber
+          - content
+          - direction
+      - name: Flight
+        api: arinc-messaging
+        keyProperties:
+          - flightId
+          - airlineCode
+          - flightNumber
+          - origin
+          - destination
+          - actualOut
+          - actualOff
+          - actualOn
+          - actualIn
+          - status
+      - name: WeatherData
+        api: arinc-messaging
+        keyProperties:
+          - station
+          - type
+          - observationTime
+          - rawText
+          - windDirection
+          - windSpeed
+
+  enums:
+    messageTypes:
+      - ACARS
+      - OOOI
+      - WEATHER
+      - NOTAM
+      - ATC
+    flightStatus:
+      - SCHEDULED
+      - DELAYED
+      - BOARDING
+      - DEPARTED
+      - IN_FLIGHT
+      - LANDED
+      - ARRIVED
+      - CANCELLED
+    weatherTypes:
+      - METAR
+      - TAF
+      - SIGMET
+      - PIREP
+      - WINDS_ALOFT
+    messageDirection:
+      - DOWNLINK
+      - UPLINK
+
+  authentication:
+    schemes:
+      - type: bearer
+        name: bearerAuth
+        description: Bearer token for ARINC Online API
+        apisUsing:
+          - arinc-messaging
+
+capability:
+  workflows:
+    - name: aviation-operations
+      file: capabilities/aviation-operations.yaml
+      description: Complete aviation operations workflow combining ACARS messaging, flight tracking, and weather data
+      apisCombined:
+        - arinc-messaging
+      toolCount: 4
+      personas:
+        - operations-controller
+        - dispatcher
+        - ground-operations-manager
+      domains:
+        - Aviation Operations
+        - Flight Dispatch
+
+  personas:
+    - id: operations-controller
+      name: Operations Controller
+      description: Airline operations center controller monitoring fleet status and communicating with aircraft
+      workflows:
+        - aviation-operations
+    - id: dispatcher
+      name: Flight Dispatcher
+      description: Dispatcher responsible for flight planning, weather briefings, and operational communications
+      workflows:
+        - aviation-operations
+    - id: ground-operations-manager
+      name: Ground Operations Manager
+      description: Airport ground operations manager coordinating arrivals, departures, and gate assignments
+      workflows:
+        - aviation-operations
+
+  domains:
+    - name: Aviation Operations
+      description: Real-time airline and airport operations management
+      resources:
+        - messages
+        - flights
+    - name: Flight Dispatch
+      description: Pre-flight and in-flight dispatch support
+      resources:
+        - weather
+        - messages
+
+  namespaces:
+    consumed:
+      - name: arinc-messaging
+        type: http
+        baseUri: https://api.arinconline.collinsaerospace.com
+    restExposed:
+      - name: aviation-operations-api
+        port: 8080
+    mcpExposed:
+      - name: aviation-operations-mcp
+        port: 9090
+
+  binds:
+    - name: ARINC_BEARER_TOKEN
+      description: Bearer token for Collins Aerospace ARINC Online API
+      workflows:
+        - aviation-operations
+
+crossReference:
+  - resource: messages
+    operations:
+      - list-messages
+      - send-message
+    workflows:
+      - aviation-operations
+    personas:
+      - operations-controller
+      - ground-operations-manager
+  - resource: flights
+    operations:
+      - list-flights
+    workflows:
+      - aviation-operations
+    personas:
+      - operations-controller
+      - dispatcher
+  - resource: weather
+    operations:
+      - get-weather
+    workflows:
+      - aviation-operations
+    personas:
+      - dispatcher

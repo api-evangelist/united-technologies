@@ -1,0 +1,12 @@
+{
+  "station": "KBOS",
+  "type": "METAR",
+  "observationTime": "2025-03-14T10:00:00Z",
+  "rawText": "KBOS 141000Z 27015KT 10SM SCT060 BKN090 12/02 A3012 RMK AO2",
+  "windDirection": 270,
+  "windSpeed": 15,
+  "visibility": 10.0,
+  "clouds": [
+    "item-value"
+  ]
+}

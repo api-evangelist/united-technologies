@@ -1,0 +1,221 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Collins Aerospace ARINC Messaging API"
+  description: "Aviation messaging and data exchange via the ARINC Global Network - messages, flights, and weather."
+  tags:
+    - Collins Aerospace
+    - ARINC
+    - Aviation
+    - Messaging
+    - ACARS
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      ARINC_BEARER_TOKEN: ARINC_BEARER_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: arinc-messaging
+      baseUri: https://api.arinconline.collinsaerospace.com
+      description: "Collins Aerospace ARINC Online API."
+      authentication:
+        type: bearer
+        token: "{{ARINC_BEARER_TOKEN}}"
+      resources:
+        - name: messages
+          path: /messages
+          description: "ARINC aviation messages."
+          operations:
+            - name: list-messages
+              method: GET
+              description: "List aviation messages with optional filters."
+              inputParameters:
+                - name: messageType
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by message type."
+                - name: registration
+                  in: query
+                  type: string
+                  required: false
+                  description: "Aircraft registration."
+                - name: airlineCode
+                  in: query
+                  type: string
+                  required: false
+                  description: "IATA airline code."
+                - name: flightNumber
+                  in: query
+                  type: string
+                  required: false
+                  description: "Flight number."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: send-message
+              method: POST
+              description: "Send an uplink message to an aircraft."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  messageType: "{{tools.messageType}}"
+                  registration: "{{tools.registration}}"
+                  content: "{{tools.content}}"
+        - name: flights
+          path: /flights
+          description: "Flight information and OOOI events."
+          operations:
+            - name: list-flights
+              method: GET
+              description: "List flights with OOOI event times."
+              inputParameters:
+                - name: airlineCode
+                  in: query
+                  type: string
+                  required: false
+                  description: "IATA airline code."
+                - name: flightNumber
+                  in: query
+                  type: string
+                  required: false
+                  description: "Flight number."
+                - name: departureDate
+                  in: query
+                  type: string
+                  required: false
+                  description: "Departure date."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: weather
+          path: /weather
+          description: "Aviation weather data."
+          operations:
+            - name: get-weather
+              method: GET
+              description: "Get aviation weather for a station."
+              inputParameters:
+                - name: stationType
+                  in: query
+                  type: string
+                  required: true
+                  description: "Weather report type."
+                - name: station
+                  in: query
+                  type: string
+                  required: false
+                  description: "ICAO station identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: arinc-messaging-rest
+      resources:
+        - path: /v1/messages
+          name: messages
+          description: "Aviation message management."
+          operations:
+            - method: GET
+              name: list-messages
+              description: "List messages."
+              call: "arinc-messaging.list-messages"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: send-message
+              description: "Send message."
+              call: "arinc-messaging.send-message"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/flights
+          name: flights
+          description: "Flight tracking."
+          operations:
+            - method: GET
+              name: list-flights
+              description: "List flights."
+              call: "arinc-messaging.list-flights"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/weather
+          name: weather
+          description: "Aviation weather."
+          operations:
+            - method: GET
+              name: get-weather
+              description: "Get weather."
+              call: "arinc-messaging.get-weather"
+              with:
+                stationType: "rest.stationType"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: arinc-messaging-mcp
+      transport: http
+      tools:
+        - name: list-acars-messages
+          description: "List ACARS aviation messages filtered by airline, registration, or flight number."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "arinc-messaging.list-messages"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: send-acars-message
+          description: "Send an ACARS uplink message to an aircraft via the ARINC Global Network."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "arinc-messaging.send-message"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-flights
+          description: "List flights with OOOI event times (Out, Off, On, In) for operational tracking."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "arinc-messaging.list-flights"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-aviation-weather
+          description: "Get aviation weather data (METAR, TAF, SIGMET) for an ICAO station."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "arinc-messaging.get-weather"
+          with:
+            stationType: "tools.stationType"
+            station: "tools.station"
+          outputParameters:
+            - type: object
+              mapping: "$."

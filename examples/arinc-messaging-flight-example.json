@@ -1,0 +1,15 @@
+{
+  "flightId": "AA100-20250314-BOS-JFK",
+  "airlineCode": "AA",
+  "flightNumber": "AA100",
+  "registration": "N12345",
+  "departureDate": "2025-03-14",
+  "origin": "BOS",
+  "destination": "JFK",
+  "scheduledDeparture": "2025-03-14T10:00:00Z",
+  "actualOut": "2025-03-14T10:05:00Z",
+  "actualOff": "2025-03-14T10:18:00Z",
+  "actualOn": "2025-03-14T10:00:00Z",
+  "actualIn": "2025-03-14T10:00:00Z",
+  "status": "IN_FLIGHT"
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-structure/arinc-messaging-send-message-response-structure.json",
+  "name": "SendMessageResponse",
+  "description": "Response confirming message was queued for transmission.",
+  "properties": {
+    "messageId": {
+      "description": "Assigned message identifier.",
+      "example": "MSG-20250314-001235",
+      "type": "string"
+    },
+    "status": {
+      "description": "Initial message status.",
+      "enum": [
+        "QUEUED",
+        "SENT",
+        "DELIVERED",
+        "FAILED"
+      ],
+      "example": "QUEUED",
+      "type": "string"
+    },
+    "timestamp": {
+      "description": "Timestamp when message was queued.",
+      "example": "2025-03-14T10:31:00Z",
+      "type": "datetime"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-structure/arinc-messaging-cloud-layer-structure.json",
+  "name": "CloudLayer",
+  "description": "A cloud layer in a weather observation.",
+  "properties": {
+    "coverage": {
+      "description": "Cloud coverage code.",
+      "enum": [
+        "FEW",
+        "SCT",
+        "BKN",
+        "OVC"
+      ],
+      "example": "SCT",
+      "type": "string"
+    },
+    "altitude": {
+      "description": "Cloud base altitude in feet MSL.",
+      "example": 6000,
+      "type": "int32"
+    }
+  },
+  "type": "object"
+}

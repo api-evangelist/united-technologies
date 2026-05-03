@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-schema/arinc-messaging-flight-schema.json",
+  "title": "Flight",
+  "description": "Aviation flight record with OOOI event times.",
+  "type": "object",
+  "properties": {
+    "flightId": {
+      "type": "string",
+      "description": "Unique flight identifier.",
+      "example": "AA100-20250314-BOS-JFK"
+    },
+    "airlineCode": {
+      "type": "string",
+      "description": "IATA airline code.",
+      "example": "AA"
+    },
+    "flightNumber": {
+      "type": "string",
+      "description": "Flight number.",
+      "example": "AA100"
+    },
+    "registration": {
+      "type": "string",
+      "description": "Aircraft registration.",
+      "example": "N12345"
+    },
+    "departureDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Scheduled departure date.",
+      "example": "2025-03-14"
+    },
+    "origin": {
+      "type": "string",
+      "description": "Origin airport IATA code.",
+      "example": "BOS"
+    },
+    "destination": {
+      "type": "string",
+      "description": "Destination airport IATA code.",
+      "example": "JFK"
+    },
+    "scheduledDeparture": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled departure time (UTC).",
+      "example": "2025-03-14T10:00:00Z"
+    },
+    "actualOut": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Actual OUT time - aircraft left gate (UTC).",
+      "example": "2025-03-14T10:05:00Z"
+    },
+    "actualOff": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Actual OFF time - aircraft left ground (UTC).",
+      "example": "2025-03-14T10:18:00Z"
+    },
+    "actualOn": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Actual ON time - aircraft touched down (UTC)."
+    },
+    "actualIn": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Actual IN time - aircraft arrived at gate (UTC)."
+    },
+    "status": {
+      "type": "string",
+      "description": "Current flight status.",
+      "enum": [
+        "SCHEDULED",
+        "DELAYED",
+        "BOARDING",
+        "DEPARTED",
+        "IN_FLIGHT",
+        "LANDED",
+        "ARRIVED",
+        "CANCELLED"
+      ],
+      "example": "IN_FLIGHT"
+    }
+  }
+}

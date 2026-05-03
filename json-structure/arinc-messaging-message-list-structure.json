@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-structure/arinc-messaging-message-list-structure.json",
+  "name": "MessageList",
+  "description": "Paginated list of ARINC messages.",
+  "properties": {
+    "total": {
+      "description": "Total number of matching messages.",
+      "example": 500,
+      "type": "int32"
+    },
+    "messages": {
+      "description": "List of message records.",
+      "items": {
+        "$ref": "#/components/schemas/Message"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

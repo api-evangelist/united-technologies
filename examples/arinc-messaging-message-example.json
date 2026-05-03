@@ -1,0 +1,12 @@
+{
+  "messageId": "MSG-20250314-001234",
+  "messageType": "ACARS",
+  "registration": "N12345",
+  "airlineCode": "AA",
+  "flightNumber": "AA100",
+  "timestamp": "2025-03-14T10:30:00Z",
+  "content": "/AA AA100 BOS JFK 1030",
+  "direction": "DOWNLINK",
+  "origin": "BOS",
+  "destination": "JFK"
+}

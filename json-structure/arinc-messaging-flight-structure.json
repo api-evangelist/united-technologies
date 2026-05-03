@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-structure/arinc-messaging-flight-structure.json",
+  "name": "Flight",
+  "description": "Aviation flight record with OOOI event times.",
+  "properties": {
+    "flightId": {
+      "description": "Unique flight identifier.",
+      "example": "AA100-20250314-BOS-JFK",
+      "type": "string"
+    },
+    "airlineCode": {
+      "description": "IATA airline code.",
+      "example": "AA",
+      "type": "string"
+    },
+    "flightNumber": {
+      "description": "Flight number.",
+      "example": "AA100",
+      "type": "string"
+    },
+    "registration": {
+      "description": "Aircraft registration.",
+      "example": "N12345",
+      "type": "string"
+    },
+    "departureDate": {
+      "description": "Scheduled departure date.",
+      "example": "2025-03-14",
+      "type": "date"
+    },
+    "origin": {
+      "description": "Origin airport IATA code.",
+      "example": "BOS",
+      "type": "string"
+    },
+    "destination": {
+      "description": "Destination airport IATA code.",
+      "example": "JFK",
+      "type": "string"
+    },
+    "scheduledDeparture": {
+      "description": "Scheduled departure time (UTC).",
+      "example": "2025-03-14T10:00:00Z",
+      "type": "datetime"
+    },
+    "actualOut": {
+      "description": "Actual OUT time - aircraft left gate (UTC).",
+      "example": "2025-03-14T10:05:00Z",
+      "type": "datetime"
+    },
+    "actualOff": {
+      "description": "Actual OFF time - aircraft left ground (UTC).",
+      "example": "2025-03-14T10:18:00Z",
+      "type": "datetime"
+    },
+    "actualOn": {
+      "description": "Actual ON time - aircraft touched down (UTC).",
+      "type": "datetime"
+    },
+    "actualIn": {
+      "description": "Actual IN time - aircraft arrived at gate (UTC).",
+      "type": "datetime"
+    },
+    "status": {
+      "description": "Current flight status.",
+      "enum": [
+        "SCHEDULED",
+        "DELAYED",
+        "BOARDING",
+        "DEPARTED",
+        "IN_FLIGHT",
+        "LANDED",
+        "ARRIVED",
+        "CANCELLED"
+      ],
+      "example": "IN_FLIGHT",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

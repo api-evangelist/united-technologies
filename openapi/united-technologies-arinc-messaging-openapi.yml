@@ -1,0 +1,643 @@
+openapi: 3.1.0
+info:
+  title: Collins Aerospace ARINC Messaging API
+  description: >-
+    The Collins Aerospace ARINC Messaging API provides access to the ARINC Global
+    Network for aviation messaging and data exchange. Supports ACARS, OOOI, flight
+    messages, weather data, and operational communications between aircraft, airlines,
+    airports, and ground operations. Part of the legacy United Technologies / RTX
+    Collins Aerospace digital platform.
+  version: '1.0'
+  contact:
+    name: Collins Aerospace ARINC Support
+    url: https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange
+  x-generated-from: documentation
+externalDocs:
+  description: Collins Aerospace ARINC Messaging Documentation
+  url: https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange/arinc-messaging
+servers:
+  - url: https://api.arinconline.collinsaerospace.com
+    description: ARINC Online Production
+tags:
+  - name: Messages
+    description: Aviation message transmission and retrieval operations
+  - name: Flights
+    description: Flight information and tracking operations
+  - name: Weather
+    description: Aviation weather data operations
+security:
+  - bearerAuth: []
+paths:
+  /messages:
+    get:
+      operationId: listMessages
+      summary: Collins Aerospace ARINC List Messages
+      description: >-
+        Returns a list of ARINC aviation messages filtered by message type,
+        registration, airline code, and date range.
+      tags:
+        - Messages
+      parameters:
+        - name: messageType
+          in: query
+          required: false
+          description: Filter by ARINC message type (ACARS, OOOI, etc.).
+          schema:
+            type: string
+            enum:
+              - ACARS
+              - OOOI
+              - WEATHER
+              - NOTAM
+              - ATC
+          example: 'ACARS'
+        - name: registration
+          in: query
+          required: false
+          description: Aircraft registration number.
+          schema:
+            type: string
+          example: 'N12345'
+        - name: airlineCode
+          in: query
+          required: false
+          description: IATA airline code.
+          schema:
+            type: string
+          example: 'AA'
+        - name: flightNumber
+          in: query
+          required: false
+          description: Flight number.
+          schema:
+            type: string
+          example: 'AA100'
+        - name: fromTime
+          in: query
+          required: false
+          description: Start of time range (ISO 8601).
+          schema:
+            type: string
+            format: date-time
+          example: '2025-03-14T00:00:00Z'
+        - name: toTime
+          in: query
+          required: false
+          description: End of time range (ISO 8601).
+          schema:
+            type: string
+            format: date-time
+          example: '2025-03-14T23:59:59Z'
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of messages to return.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+          example: 100
+        - name: offset
+          in: query
+          required: false
+          description: Pagination offset.
+          schema:
+            type: integer
+            minimum: 0
+          example: 0
+      responses:
+        '200':
+          description: Messages returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageList'
+              examples:
+                ListMessages200Example:
+                  summary: Default listMessages 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 1
+                    messages:
+                      - messageId: 'MSG-20250314-001234'
+                        messageType: 'ACARS'
+                        registration: 'N12345'
+                        airlineCode: 'AA'
+                        flightNumber: 'AA100'
+                        timestamp: '2025-03-14T10:30:00Z'
+                        content: '/AA AA100 BOS JFK 1030'
+                        direction: 'DOWNLINK'
+                        origin: 'BOS'
+                        destination: 'JFK'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: sendMessage
+      summary: Collins Aerospace ARINC Send Message
+      description: >-
+        Sends an ARINC uplink message to an aircraft or ground station via the
+        ARINC Global Network.
+      tags:
+        - Messages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendMessageRequest'
+            examples:
+              SendMessageRequestExample:
+                summary: Default sendMessage request
+                x-microcks-default: true
+                value:
+                  messageType: 'ACARS'
+                  registration: 'N12345'
+                  airlineCode: 'AA'
+                  flightNumber: 'AA100'
+                  content: 'GATE CHANGE TO B22'
+                  priority: 'NORMAL'
+      responses:
+        '201':
+          description: Message sent successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+              examples:
+                SendMessage201Example:
+                  summary: Default sendMessage 201 response
+                  x-microcks-default: true
+                  value:
+                    messageId: 'MSG-20250314-001235'
+                    status: 'QUEUED'
+                    timestamp: '2025-03-14T10:31:00Z'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /flights:
+    get:
+      operationId: listFlights
+      summary: Collins Aerospace ARINC List Flights
+      description: >-
+        Returns flight information including OOOI times (Out, Off, On, In),
+        gate information, and operational status.
+      tags:
+        - Flights
+      parameters:
+        - name: airlineCode
+          in: query
+          required: false
+          description: IATA airline code.
+          schema:
+            type: string
+          example: 'AA'
+        - name: flightNumber
+          in: query
+          required: false
+          description: Flight number.
+          schema:
+            type: string
+          example: 'AA100'
+        - name: departureDate
+          in: query
+          required: false
+          description: Flight departure date (YYYY-MM-DD).
+          schema:
+            type: string
+            format: date
+          example: '2025-03-14'
+        - name: origin
+          in: query
+          required: false
+          description: Origin airport IATA code.
+          schema:
+            type: string
+          example: 'BOS'
+        - name: destination
+          in: query
+          required: false
+          description: Destination airport IATA code.
+          schema:
+            type: string
+          example: 'JFK'
+      responses:
+        '200':
+          description: Flights returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlightList'
+              examples:
+                ListFlights200Example:
+                  summary: Default listFlights 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 1
+                    flights:
+                      - flightId: 'AA100-20250314-BOS-JFK'
+                        airlineCode: 'AA'
+                        flightNumber: 'AA100'
+                        registration: 'N12345'
+                        departureDate: '2025-03-14'
+                        origin: 'BOS'
+                        destination: 'JFK'
+                        scheduledDeparture: '2025-03-14T10:00:00Z'
+                        actualOut: '2025-03-14T10:05:00Z'
+                        actualOff: '2025-03-14T10:18:00Z'
+                        status: 'IN_FLIGHT'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /weather:
+    get:
+      operationId: getWeather
+      summary: Collins Aerospace ARINC Get Aviation Weather
+      description: >-
+        Returns aviation weather data including METARs, TAFs, SIGMETs, PIREPs,
+        and graphical weather information for specified airports or regions.
+      tags:
+        - Weather
+      parameters:
+        - name: stationType
+          in: query
+          required: true
+          description: Type of weather data requested.
+          schema:
+            type: string
+            enum:
+              - METAR
+              - TAF
+              - SIGMET
+              - PIREP
+              - WINDS_ALOFT
+          example: 'METAR'
+        - name: station
+          in: query
+          required: false
+          description: ICAO station identifier.
+          schema:
+            type: string
+          example: 'KBOS'
+        - name: region
+          in: query
+          required: false
+          description: Geographic region code.
+          schema:
+            type: string
+          example: 'CONUS'
+      responses:
+        '200':
+          description: Weather data returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeatherData'
+              examples:
+                GetWeather200Example:
+                  summary: Default getWeather 200 response
+                  x-microcks-default: true
+                  value:
+                    station: 'KBOS'
+                    type: 'METAR'
+                    observationTime: '2025-03-14T10:00:00Z'
+                    rawText: 'KBOS 141000Z 27015KT 10SM SCT060 BKN090 12/02 A3012 RMK AO2'
+                    windDirection: 270
+                    windSpeed: 15
+                    visibility: 10.0
+                    clouds:
+                      - coverage: 'SCT'
+                        altitude: 6000
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token for ARINC Online API authentication.
+  schemas:
+    Message:
+      type: object
+      description: An ARINC aviation message.
+      properties:
+        messageId:
+          type: string
+          description: Unique message identifier.
+          example: 'MSG-20250314-001234'
+        messageType:
+          type: string
+          description: ARINC message type.
+          enum:
+            - ACARS
+            - OOOI
+            - WEATHER
+            - NOTAM
+            - ATC
+          example: 'ACARS'
+        registration:
+          type: string
+          description: Aircraft registration number.
+          example: 'N12345'
+        airlineCode:
+          type: string
+          description: IATA airline code.
+          example: 'AA'
+        flightNumber:
+          type: string
+          description: Flight number.
+          example: 'AA100'
+        timestamp:
+          type: string
+          format: date-time
+          description: Message transmission timestamp (UTC).
+          example: '2025-03-14T10:30:00Z'
+        content:
+          type: string
+          description: Raw message content.
+          example: '/AA AA100 BOS JFK 1030'
+        direction:
+          type: string
+          description: Message direction relative to aircraft.
+          enum:
+            - DOWNLINK
+            - UPLINK
+          example: 'DOWNLINK'
+        origin:
+          type: string
+          description: Origin airport IATA code.
+          example: 'BOS'
+        destination:
+          type: string
+          description: Destination airport IATA code.
+          example: 'JFK'
+    MessageList:
+      type: object
+      description: Paginated list of ARINC messages.
+      properties:
+        total:
+          type: integer
+          description: Total number of matching messages.
+          example: 500
+        messages:
+          type: array
+          description: List of message records.
+          items:
+            $ref: '#/components/schemas/Message'
+    SendMessageRequest:
+      type: object
+      required:
+        - messageType
+        - registration
+        - content
+      description: Request to send an uplink message.
+      properties:
+        messageType:
+          type: string
+          description: ARINC message type.
+          example: 'ACARS'
+        registration:
+          type: string
+          description: Target aircraft registration.
+          example: 'N12345'
+        airlineCode:
+          type: string
+          description: IATA airline code.
+          example: 'AA'
+        flightNumber:
+          type: string
+          description: Flight number.
+          example: 'AA100'
+        content:
+          type: string
+          description: Message content to send.
+          example: 'GATE CHANGE TO B22'
+        priority:
+          type: string
+          description: Message transmission priority.
+          enum:
+            - URGENT
+            - HIGH
+            - NORMAL
+            - LOW
+          example: 'NORMAL'
+    SendMessageResponse:
+      type: object
+      description: Response confirming message was queued for transmission.
+      properties:
+        messageId:
+          type: string
+          description: Assigned message identifier.
+          example: 'MSG-20250314-001235'
+        status:
+          type: string
+          description: Initial message status.
+          enum:
+            - QUEUED
+            - SENT
+            - DELIVERED
+            - FAILED
+          example: 'QUEUED'
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when message was queued.
+          example: '2025-03-14T10:31:00Z'
+    Flight:
+      type: object
+      description: Aviation flight record with OOOI event times.
+      properties:
+        flightId:
+          type: string
+          description: Unique flight identifier.
+          example: 'AA100-20250314-BOS-JFK'
+        airlineCode:
+          type: string
+          description: IATA airline code.
+          example: 'AA'
+        flightNumber:
+          type: string
+          description: Flight number.
+          example: 'AA100'
+        registration:
+          type: string
+          description: Aircraft registration.
+          example: 'N12345'
+        departureDate:
+          type: string
+          format: date
+          description: Scheduled departure date.
+          example: '2025-03-14'
+        origin:
+          type: string
+          description: Origin airport IATA code.
+          example: 'BOS'
+        destination:
+          type: string
+          description: Destination airport IATA code.
+          example: 'JFK'
+        scheduledDeparture:
+          type: string
+          format: date-time
+          description: Scheduled departure time (UTC).
+          example: '2025-03-14T10:00:00Z'
+        actualOut:
+          type: string
+          format: date-time
+          description: Actual OUT time - aircraft left gate (UTC).
+          example: '2025-03-14T10:05:00Z'
+        actualOff:
+          type: string
+          format: date-time
+          description: Actual OFF time - aircraft left ground (UTC).
+          example: '2025-03-14T10:18:00Z'
+        actualOn:
+          type: string
+          format: date-time
+          description: Actual ON time - aircraft touched down (UTC).
+        actualIn:
+          type: string
+          format: date-time
+          description: Actual IN time - aircraft arrived at gate (UTC).
+        status:
+          type: string
+          description: Current flight status.
+          enum:
+            - SCHEDULED
+            - DELAYED
+            - BOARDING
+            - DEPARTED
+            - IN_FLIGHT
+            - LANDED
+            - ARRIVED
+            - CANCELLED
+          example: 'IN_FLIGHT'
+    FlightList:
+      type: object
+      description: Paginated list of flights.
+      properties:
+        total:
+          type: integer
+          description: Total number of matching flights.
+          example: 20
+        flights:
+          type: array
+          description: List of flight records.
+          items:
+            $ref: '#/components/schemas/Flight'
+    CloudLayer:
+      type: object
+      description: A cloud layer in a weather observation.
+      properties:
+        coverage:
+          type: string
+          description: Cloud coverage code.
+          enum:
+            - FEW
+            - SCT
+            - BKN
+            - OVC
+          example: 'SCT'
+        altitude:
+          type: integer
+          description: Cloud base altitude in feet MSL.
+          example: 6000
+    WeatherData:
+      type: object
+      description: Aviation weather observation or forecast.
+      properties:
+        station:
+          type: string
+          description: ICAO weather station identifier.
+          example: 'KBOS'
+        type:
+          type: string
+          description: Type of weather report.
+          enum:
+            - METAR
+            - TAF
+            - SIGMET
+            - PIREP
+            - WINDS_ALOFT
+          example: 'METAR'
+        observationTime:
+          type: string
+          format: date-time
+          description: Time of the weather observation (UTC).
+          example: '2025-03-14T10:00:00Z'
+        rawText:
+          type: string
+          description: Raw weather report text.
+          example: 'KBOS 141000Z 27015KT 10SM SCT060 BKN090 12/02 A3012 RMK AO2'
+        windDirection:
+          type: integer
+          description: Wind direction in degrees magnetic.
+          example: 270
+        windSpeed:
+          type: integer
+          description: Wind speed in knots.
+          example: 15
+        visibility:
+          type: number
+          description: Visibility in statute miles.
+          example: 10.0
+        clouds:
+          type: array
+          description: Cloud layers.
+          items:
+            $ref: '#/components/schemas/CloudLayer'
+    Error:
+      type: object
+      description: API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: 'INVALID_REQUEST'
+        message:
+          type: string
+          description: Human-readable error message.
+          example: 'Invalid message type'

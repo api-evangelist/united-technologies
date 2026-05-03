@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-structure/arinc-messaging-send-message-request-structure.json",
+  "name": "SendMessageRequest",
+  "description": "Request to send an uplink message.",
+  "properties": {
+    "messageType": {
+      "description": "ARINC message type.",
+      "example": "ACARS",
+      "type": "string"
+    },
+    "registration": {
+      "description": "Target aircraft registration.",
+      "example": "N12345",
+      "type": "string"
+    },
+    "airlineCode": {
+      "description": "IATA airline code.",
+      "example": "AA",
+      "type": "string"
+    },
+    "flightNumber": {
+      "description": "Flight number.",
+      "example": "AA100",
+      "type": "string"
+    },
+    "content": {
+      "description": "Message content to send.",
+      "example": "GATE CHANGE TO B22",
+      "type": "string"
+    },
+    "priority": {
+      "description": "Message transmission priority.",
+      "enum": [
+        "URGENT",
+        "HIGH",
+        "NORMAL",
+        "LOW"
+      ],
+      "example": "NORMAL",
+      "type": "string"
+    }
+  },
+  "required": [
+    "messageType",
+    "registration",
+    "content"
+  ],
+  "type": "object"
+}

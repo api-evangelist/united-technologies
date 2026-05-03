@@ -1,0 +1,8 @@
+{
+  "messageType": "ACARS",
+  "registration": "N12345",
+  "airlineCode": "AA",
+  "flightNumber": "AA100",
+  "content": "GATE CHANGE TO B22",
+  "priority": "NORMAL"
+}

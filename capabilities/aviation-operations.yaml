@@ -1,0 +1,123 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Collins Aerospace Aviation Operations"
+  description: >-
+    Workflow capability for airline and airport aviation operations using the Collins
+    Aerospace ARINC Digital Exchange platform. Combines aircraft messaging, flight
+    tracking, and weather data to support operations control centers, dispatch teams,
+    and ground operations managers managing daily flight operations.
+  tags:
+    - Collins Aerospace
+    - ARINC
+    - Aviation Operations
+    - Airline Operations
+    - Dispatch
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      ARINC_BEARER_TOKEN: ARINC_BEARER_TOKEN
+
+capability:
+  consumes:
+    - import: arinc-messaging
+      location: ./shared/arinc-messaging.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: aviation-operations-api
+      description: "Unified REST API for Collins Aerospace aviation operations."
+      resources:
+        - path: /v1/messages
+          name: messages
+          description: "ACARS aircraft messaging."
+          operations:
+            - method: GET
+              name: list-messages
+              description: "List aviation messages."
+              call: "arinc-messaging.list-messages"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: send-message
+              description: "Send aircraft uplink message."
+              call: "arinc-messaging.send-message"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/flights
+          name: flights
+          description: "Flight tracking and OOOI events."
+          operations:
+            - method: GET
+              name: list-flights
+              description: "List flights with OOOI data."
+              call: "arinc-messaging.list-flights"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/weather
+          name: weather
+          description: "Aviation weather data."
+          operations:
+            - method: GET
+              name: get-weather
+              description: "Get aviation weather."
+              call: "arinc-messaging.get-weather"
+              with:
+                stationType: "rest.stationType"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: aviation-operations-mcp
+      transport: http
+      description: "MCP server for AI-assisted Collins Aerospace aviation operations management."
+      tools:
+        - name: list-aircraft-messages
+          description: "List ACARS messages for aircraft, filtered by airline code, registration, or flight number."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "arinc-messaging.list-messages"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: send-aircraft-message
+          description: "Send an ACARS uplink message to an aircraft via the ARINC Global Network (gate changes, operational updates)."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "arinc-messaging.send-message"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: track-flights
+          description: "Track flights with real-time OOOI event times (Out, Off, On, In) for operations center monitoring."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "arinc-messaging.list-flights"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-aviation-weather
+          description: "Get aviation weather data including METARs, TAFs, and SIGMETs for dispatch and flight operations."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "arinc-messaging.get-weather"
+          with:
+            stationType: "tools.stationType"
+            station: "tools.station"
+          outputParameters:
+            - type: object
+              mapping: "$."

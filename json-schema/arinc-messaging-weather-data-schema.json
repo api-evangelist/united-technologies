@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-schema/arinc-messaging-weather-data-schema.json",
+  "title": "WeatherData",
+  "description": "Aviation weather observation or forecast.",
+  "type": "object",
+  "properties": {
+    "station": {
+      "type": "string",
+      "description": "ICAO weather station identifier.",
+      "example": "KBOS"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of weather report.",
+      "enum": [
+        "METAR",
+        "TAF",
+        "SIGMET",
+        "PIREP",
+        "WINDS_ALOFT"
+      ],
+      "example": "METAR"
+    },
+    "observationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time of the weather observation (UTC).",
+      "example": "2025-03-14T10:00:00Z"
+    },
+    "rawText": {
+      "type": "string",
+      "description": "Raw weather report text.",
+      "example": "KBOS 141000Z 27015KT 10SM SCT060 BKN090 12/02 A3012 RMK AO2"
+    },
+    "windDirection": {
+      "type": "integer",
+      "description": "Wind direction in degrees magnetic.",
+      "example": 270
+    },
+    "windSpeed": {
+      "type": "integer",
+      "description": "Wind speed in knots.",
+      "example": 15
+    },
+    "visibility": {
+      "type": "number",
+      "description": "Visibility in statute miles.",
+      "example": 10.0
+    },
+    "clouds": {
+      "type": "array",
+      "description": "Cloud layers.",
+      "items": {
+        "$ref": "#/components/schemas/CloudLayer"
+      }
+    }
+  }
+}

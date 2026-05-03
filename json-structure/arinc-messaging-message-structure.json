@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-structure/arinc-messaging-message-structure.json",
+  "name": "Message",
+  "description": "An ARINC aviation message.",
+  "properties": {
+    "messageId": {
+      "description": "Unique message identifier.",
+      "example": "MSG-20250314-001234",
+      "type": "string"
+    },
+    "messageType": {
+      "description": "ARINC message type.",
+      "enum": [
+        "ACARS",
+        "OOOI",
+        "WEATHER",
+        "NOTAM",
+        "ATC"
+      ],
+      "example": "ACARS",
+      "type": "string"
+    },
+    "registration": {
+      "description": "Aircraft registration number.",
+      "example": "N12345",
+      "type": "string"
+    },
+    "airlineCode": {
+      "description": "IATA airline code.",
+      "example": "AA",
+      "type": "string"
+    },
+    "flightNumber": {
+      "description": "Flight number.",
+      "example": "AA100",
+      "type": "string"
+    },
+    "timestamp": {
+      "description": "Message transmission timestamp (UTC).",
+      "example": "2025-03-14T10:30:00Z",
+      "type": "datetime"
+    },
+    "content": {
+      "description": "Raw message content.",
+      "example": "/AA AA100 BOS JFK 1030",
+      "type": "string"
+    },
+    "direction": {
+      "description": "Message direction relative to aircraft.",
+      "enum": [
+        "DOWNLINK",
+        "UPLINK"
+      ],
+      "example": "DOWNLINK",
+      "type": "string"
+    },
+    "origin": {
+      "description": "Origin airport IATA code.",
+      "example": "BOS",
+      "type": "string"
+    },
+    "destination": {
+      "description": "Destination airport IATA code.",
+      "example": "JFK",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-structure/arinc-messaging-flight-list-structure.json",
+  "name": "FlightList",
+  "description": "Paginated list of flights.",
+  "properties": {
+    "total": {
+      "description": "Total number of matching flights.",
+      "example": 20,
+      "type": "int32"
+    },
+    "flights": {
+      "description": "List of flight records.",
+      "items": {
+        "$ref": "#/components/schemas/Flight"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

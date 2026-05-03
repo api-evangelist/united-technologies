@@ -1,0 +1,148 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "arinc": "https://collinsaerospace.com/arinc/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "CloudLayer": "arinc:CloudLayer",
+    "FlightList": "arinc:FlightList",
+    "Flight": "arinc:Flight",
+    "MessageList": "arinc:MessageList",
+    "Message": "arinc:Message",
+    "SendMessageRequest": "arinc:SendMessageRequest",
+    "SendMessageResponse": "arinc:SendMessageResponse",
+    "WeatherData": "arinc:WeatherData",
+    "coverage": {
+      "@id": "arinc:coverage",
+      "@type": "xsd:string"
+    },
+    "altitude": {
+      "@id": "arinc:altitude",
+      "@type": "xsd:integer"
+    },
+    "total": {
+      "@id": "arinc:total",
+      "@type": "xsd:integer"
+    },
+    "flights": {
+      "@id": "arinc:flights",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "flightId": {
+      "@id": "arinc:flightId",
+      "@type": "xsd:string"
+    },
+    "airlineCode": {
+      "@id": "arinc:airlineCode",
+      "@type": "xsd:string"
+    },
+    "flightNumber": {
+      "@id": "arinc:flightNumber",
+      "@type": "xsd:string"
+    },
+    "registration": {
+      "@id": "arinc:registration",
+      "@type": "xsd:string"
+    },
+    "departureDate": {
+      "@id": "arinc:departureDate",
+      "@type": "xsd:date"
+    },
+    "origin": {
+      "@id": "arinc:origin",
+      "@type": "xsd:string"
+    },
+    "destination": {
+      "@id": "arinc:destination",
+      "@type": "xsd:string"
+    },
+    "scheduledDeparture": {
+      "@id": "arinc:scheduledDeparture",
+      "@type": "xsd:dateTime"
+    },
+    "actualOut": {
+      "@id": "arinc:actualOut",
+      "@type": "xsd:dateTime"
+    },
+    "actualOff": {
+      "@id": "arinc:actualOff",
+      "@type": "xsd:dateTime"
+    },
+    "actualOn": {
+      "@id": "arinc:actualOn",
+      "@type": "xsd:dateTime"
+    },
+    "actualIn": {
+      "@id": "arinc:actualIn",
+      "@type": "xsd:dateTime"
+    },
+    "status": {
+      "@id": "arinc:status",
+      "@type": "xsd:string"
+    },
+    "messages": {
+      "@id": "arinc:messages",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "messageId": {
+      "@id": "arinc:messageId",
+      "@type": "xsd:string"
+    },
+    "messageType": {
+      "@id": "arinc:messageType",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "arinc:timestamp",
+      "@type": "xsd:dateTime"
+    },
+    "content": {
+      "@id": "arinc:content",
+      "@type": "xsd:string"
+    },
+    "direction": {
+      "@id": "arinc:direction",
+      "@type": "xsd:string"
+    },
+    "priority": {
+      "@id": "arinc:priority",
+      "@type": "xsd:string"
+    },
+    "station": {
+      "@id": "arinc:station",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "arinc:type",
+      "@type": "xsd:string"
+    },
+    "observationTime": {
+      "@id": "arinc:observationTime",
+      "@type": "xsd:dateTime"
+    },
+    "rawText": {
+      "@id": "arinc:rawText",
+      "@type": "xsd:string"
+    },
+    "windDirection": {
+      "@id": "arinc:windDirection",
+      "@type": "xsd:integer"
+    },
+    "windSpeed": {
+      "@id": "arinc:windSpeed",
+      "@type": "xsd:integer"
+    },
+    "visibility": {
+      "@id": "arinc:visibility",
+      "@type": "xsd:decimal"
+    },
+    "clouds": {
+      "@id": "arinc:clouds",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-schema/arinc-messaging-message-list-schema.json",
+  "title": "MessageList",
+  "description": "Paginated list of ARINC messages.",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer",
+      "description": "Total number of matching messages.",
+      "example": 500
+    },
+    "messages": {
+      "type": "array",
+      "description": "List of message records.",
+      "items": {
+        "$ref": "#/components/schemas/Message"
+      }
+    }
+  }
+}

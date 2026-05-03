@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/json-structure/arinc-messaging-weather-data-structure.json",
+  "name": "WeatherData",
+  "description": "Aviation weather observation or forecast.",
+  "properties": {
+    "station": {
+      "description": "ICAO weather station identifier.",
+      "example": "KBOS",
+      "type": "string"
+    },
+    "observationTime": {
+      "description": "Time of the weather observation (UTC).",
+      "example": "2025-03-14T10:00:00Z",
+      "type": "datetime"
+    },
+    "rawText": {
+      "description": "Raw weather report text.",
+      "example": "KBOS 141000Z 27015KT 10SM SCT060 BKN090 12/02 A3012 RMK AO2",
+      "type": "string"
+    },
+    "windDirection": {
+      "description": "Wind direction in degrees magnetic.",
+      "example": 270,
+      "type": "int32"
+    },
+    "windSpeed": {
+      "description": "Wind speed in knots.",
+      "example": 15,
+      "type": "int32"
+    },
+    "visibility": {
+      "description": "Visibility in statute miles.",
+      "example": 10.0,
+      "type": "double"
+    },
+    "clouds": {
+      "description": "Cloud layers.",
+      "items": {
+        "$ref": "#/components/schemas/CloudLayer"
+      },
+      "type": "array"
+    },
+    "type": "{'type': 'string', 'description': 'Type of weather report.', 'enum': ['METAR', 'TAF', 'SIGMET', 'PIREP', 'WINDS_ALOFT'], 'example': 'METAR'}"
+  },
+  "type": "object"
+}
