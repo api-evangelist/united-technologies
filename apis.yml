@@ -48,7 +48,7 @@ apis:
       - type: JSONStructure
         url: json-structure/arinc-messaging-message-structure.json
         title: Message Structure
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/united-technologies-arinc-messaging-context.jsonld
       - type: Example
         url: examples/arinc-messaging-message-example.json
