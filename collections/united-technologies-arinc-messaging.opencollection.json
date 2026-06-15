@@ -1,0 +1,190 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Collins Aerospace ARINC Messaging API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collins Aerospace ARINC List Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arinconline.collinsaerospace.com/messages",
+            "params": [
+              {
+                "name": "messageType",
+                "value": "ACARS",
+                "type": "query",
+                "description": "Filter by ARINC message type (ACARS, OOOI, etc.)."
+              },
+              {
+                "name": "registration",
+                "value": "N12345",
+                "type": "query",
+                "description": "Aircraft registration number."
+              },
+              {
+                "name": "airlineCode",
+                "value": "AA",
+                "type": "query",
+                "description": "IATA airline code."
+              },
+              {
+                "name": "flightNumber",
+                "value": "AA100",
+                "type": "query",
+                "description": "Flight number."
+              },
+              {
+                "name": "fromTime",
+                "value": "2025-03-14T00:00:00Z",
+                "type": "query",
+                "description": "Start of time range (ISO 8601)."
+              },
+              {
+                "name": "toTime",
+                "value": "2025-03-14T23:59:59Z",
+                "type": "query",
+                "description": "End of time range (ISO 8601)."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of messages to return."
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ]
+          },
+          "docs": "Returns a list of ARINC aviation messages filtered by message type, registration, airline code, and date range."
+        },
+        {
+          "info": {
+            "name": "Collins Aerospace ARINC Send Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arinconline.collinsaerospace.com/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an ARINC uplink message to an aircraft or ground station via the ARINC Global Network."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collins Aerospace ARINC List Flights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arinconline.collinsaerospace.com/flights",
+            "params": [
+              {
+                "name": "airlineCode",
+                "value": "AA",
+                "type": "query",
+                "description": "IATA airline code."
+              },
+              {
+                "name": "flightNumber",
+                "value": "AA100",
+                "type": "query",
+                "description": "Flight number."
+              },
+              {
+                "name": "departureDate",
+                "value": "2025-03-14",
+                "type": "query",
+                "description": "Flight departure date (YYYY-MM-DD)."
+              },
+              {
+                "name": "origin",
+                "value": "BOS",
+                "type": "query",
+                "description": "Origin airport IATA code."
+              },
+              {
+                "name": "destination",
+                "value": "JFK",
+                "type": "query",
+                "description": "Destination airport IATA code."
+              }
+            ]
+          },
+          "docs": "Returns flight information including OOOI times (Out, Off, On, In), gate information, and operational status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Weather",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collins Aerospace ARINC Get Aviation Weather",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arinconline.collinsaerospace.com/weather",
+            "params": [
+              {
+                "name": "stationType",
+                "value": "METAR",
+                "type": "query",
+                "description": "Type of weather data requested."
+              },
+              {
+                "name": "station",
+                "value": "KBOS",
+                "type": "query",
+                "description": "ICAO station identifier."
+              },
+              {
+                "name": "region",
+                "value": "CONUS",
+                "type": "query",
+                "description": "Geographic region code."
+              }
+            ]
+          },
+          "docs": "Returns aviation weather data including METARs, TAFs, SIGMETs, PIREPs, and graphical weather information for specified airports or regions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
