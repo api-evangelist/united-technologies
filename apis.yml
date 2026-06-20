@@ -23,7 +23,7 @@ apis:
       data exchange. Supports ACARS, OOOI flight events, aviation weather, and operational communications between
       aircraft, airlines, airports, and ground operations. Part of the Collins Aerospace ARINC Digital Exchange
       platform.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: >-
       https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange
     baseURL: https://api.arinconline.collinsaerospace.com
