@@ -50,7 +50,7 @@ apis:
         title: Message Structure
       - type: JSONLD
         url: json-ld/united-technologies-arinc-messaging-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/arinc-messaging-message-example.json
         title: Message Example
     aid: united-technologies:arinc-messaging-api
