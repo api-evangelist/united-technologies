@@ -55,6 +55,10 @@ apis:
         title: Message Example
     aid: united-technologies:arinc-messaging-api
 common:
+  - type: DomainSecurity
+    url: security/united-technologies-domain-security.yml
+  - type: Authentication
+    url: authentication/united-technologies-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/united-technologies
   - type: Website
@@ -124,6 +128,8 @@ common:
           services.
       - name: SITA
         description: Complementary aviation communications network for shared messaging and airport data exchange services.
+  - url: https://www.rtx.com/rss-feeds/news
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
