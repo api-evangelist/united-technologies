@@ -55,6 +55,8 @@ apis:
         title: Message Example
     aid: united-technologies:arinc-messaging-api
 common:
+  - type: AgenticAccess
+    url: agentic-access/united-technologies-agentic-access.yml
   - type: DomainSecurity
     url: security/united-technologies-domain-security.yml
   - type: Authentication
