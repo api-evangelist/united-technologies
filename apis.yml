@@ -1,4 +1,18 @@
 aid: united-technologies
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/united-technologies.png
 name: United Technologies
 url: https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/apis.yml
 description: >-
@@ -17,43 +31,78 @@ tags:
   - Connectivity
   - Fortune 100
 apis:
-  - name: Collins Aerospace ARINC Messaging API
-    description: >-
-      The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and
-      data exchange. Supports ACARS, OOOI flight events, aviation weather, and operational communications between
-      aircraft, airlines, airports, and ground operations. Part of the Collins Aerospace ARINC Digital Exchange
-      platform.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: >-
-      https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange
-    baseURL: https://api.arinconline.collinsaerospace.com
-    tags:
-      - Aviation
-      - Messaging
-      - ACARS
-      - OOOI
-      - Aerospace
-    properties:
-      - type: Documentation
-        url: >-
-          https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange/arinc-messaging
-      - type: OpenAPI
-        url: openapi/united-technologies-arinc-messaging-openapi.yml
-      - type: JSONSchema
-        url: json-schema/arinc-messaging-message-schema.json
-        title: Message Schema
-      - type: JSONSchema
-        url: json-schema/arinc-messaging-flight-schema.json
-        title: Flight Schema
-      - type: JSONStructure
-        url: json-structure/arinc-messaging-message-structure.json
-        title: Message Structure
-      - type: JSONLD
-        url: json-ld/united-technologies-arinc-messaging-context.jsonld
-      - type: Examples
-        url: examples/arinc-messaging-message-example.json
-        title: Message Example
-    aid: united-technologies:arinc-messaging-api
+- aid: united-technologies:united-technologies-flights-api
+  name: United Technologies Flights API
+  description: Flight information and tracking operations
+  humanURL: >-
+    https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange
+  baseURL: https://api.arinconline.collinsaerospace.com
+  tags:
+  - Flights
+  properties:
+  - type: OpenAPI
+    url: openapi/united-technologies-flights-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange/arinc-messaging
+  - type: JSONSchema
+    url: json-schema/arinc-messaging-message-schema.json
+  - type: JSONSchema
+    url: json-schema/arinc-messaging-flight-schema.json
+  - type: JSONStructure
+    url: json-structure/arinc-messaging-message-structure.json
+  - type: JSONLD
+    url: json-ld/united-technologies-arinc-messaging-context.jsonld
+  - type: Examples
+    url: examples/arinc-messaging-message-example.json
+- aid: united-technologies:united-technologies-messages-api
+  name: United Technologies Messages API
+  description: Aviation message transmission and retrieval operations
+  humanURL: >-
+    https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange
+  baseURL: https://api.arinconline.collinsaerospace.com
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/united-technologies-messages-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange/arinc-messaging
+  - type: JSONSchema
+    url: json-schema/arinc-messaging-message-schema.json
+  - type: JSONSchema
+    url: json-schema/arinc-messaging-flight-schema.json
+  - type: JSONStructure
+    url: json-structure/arinc-messaging-message-structure.json
+  - type: JSONLD
+    url: json-ld/united-technologies-arinc-messaging-context.jsonld
+  - type: Examples
+    url: examples/arinc-messaging-message-example.json
+- aid: united-technologies:united-technologies-weather-api
+  name: United Technologies Weather API
+  description: Aviation weather data operations
+  humanURL: >-
+    https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange
+  baseURL: https://api.arinconline.collinsaerospace.com
+  tags:
+  - Weather
+  properties:
+  - type: OpenAPI
+    url: openapi/united-technologies-weather-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange/arinc-messaging
+  - type: JSONSchema
+    url: json-schema/arinc-messaging-message-schema.json
+  - type: JSONSchema
+    url: json-schema/arinc-messaging-flight-schema.json
+  - type: JSONStructure
+    url: json-structure/arinc-messaging-message-structure.json
+  - type: JSONLD
+    url: json-ld/united-technologies-arinc-messaging-context.jsonld
+  - type: Examples
+    url: examples/arinc-messaging-message-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/united-technologies-agentic-access.yml
