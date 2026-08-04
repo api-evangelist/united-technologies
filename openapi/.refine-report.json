@@ -1,0 +1,18 @@
+{
+  "provider": "united-technologies",
+  "sources": [
+    "united-technologies-flights-api-openapi.yml",
+    "united-technologies-messages-api-openapi.yml",
+    "united-technologies-weather-api-openapi.yml"
+  ],
+  "outputs": [
+    "united-technologies-flights-api-openapi.yml",
+    "united-technologies-messages-api-openapi.yml",
+    "united-technologies-weather-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
