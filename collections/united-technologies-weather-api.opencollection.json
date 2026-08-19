@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Collins Aerospace ARINC Messaging Flights Weather API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Weather",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collins Aerospace ARINC Get Aviation Weather",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arinconline.collinsaerospace.com/weather",
+            "params": [
+              {
+                "name": "stationType",
+                "value": "METAR",
+                "type": "query",
+                "description": "Type of weather data requested."
+              },
+              {
+                "name": "station",
+                "value": "KBOS",
+                "type": "query",
+                "description": "ICAO station identifier."
+              },
+              {
+                "name": "region",
+                "value": "CONUS",
+                "type": "query",
+                "description": "Geographic region code."
+              }
+            ]
+          },
+          "docs": "Returns aviation weather data including METARs, TAFs, SIGMETs, PIREPs, and graphical weather information for specified airports or regions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Collins Aerospace ARINC Messaging Flights API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collins Aerospace ARINC List Flights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arinconline.collinsaerospace.com/flights",
+            "params": [
+              {
+                "name": "airlineCode",
+                "value": "AA",
+                "type": "query",
+                "description": "IATA airline code."
+              },
+              {
+                "name": "flightNumber",
+                "value": "AA100",
+                "type": "query",
+                "description": "Flight number."
+              },
+              {
+                "name": "departureDate",
+                "value": "2025-03-14",
+                "type": "query",
+                "description": "Flight departure date (YYYY-MM-DD)."
+              },
+              {
+                "name": "origin",
+                "value": "BOS",
+                "type": "query",
+                "description": "Origin airport IATA code."
+              },
+              {
+                "name": "destination",
+                "value": "JFK",
+                "type": "query",
+                "description": "Destination airport IATA code."
+              }
+            ]
+          },
+          "docs": "Returns flight information including OOOI times (Out, Off, On, In), gate information, and operational status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

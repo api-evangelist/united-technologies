@@ -1,0 +1,235 @@
+{
+  "item": [
+    {
+      "id": "d2c79b2a-7e17-47ad-ac91-2edcee617c84",
+      "name": "Flights",
+      "description": {
+        "content": "Flight information and tracking operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fc2c4872-f2d6-45e8-8c9e-8372c7bf739d",
+          "name": "Collins Aerospace ARINC List Flights",
+          "request": {
+            "name": "Collins Aerospace ARINC List Flights",
+            "description": {
+              "content": "Returns flight information including OOOI times (Out, Off, On, In), gate information, and operational status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "flights"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "airlineCode",
+                  "value": "<string>",
+                  "description": "IATA airline code."
+                },
+                {
+                  "disabled": false,
+                  "key": "flightNumber",
+                  "value": "<string>",
+                  "description": "Flight number."
+                },
+                {
+                  "disabled": false,
+                  "key": "departureDate",
+                  "value": "<date>",
+                  "description": "Flight departure date (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "origin",
+                  "value": "<string>",
+                  "description": "Origin airport IATA code."
+                },
+                {
+                  "disabled": false,
+                  "key": "destination",
+                  "value": "<string>",
+                  "description": "Destination airport IATA code."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eae3f288-a884-4944-a29e-d5c9a3bbf550",
+              "name": "Flights returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "flights"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "airlineCode",
+                      "value": "AA"
+                    },
+                    {
+                      "key": "flightNumber",
+                      "value": "AA100"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "2025-03-14"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "BOS"
+                    },
+                    {
+                      "key": "destination",
+                      "value": "JFK"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 1,\n  \"flights\": [\n    {\n      \"flightId\": \"AA100-20250314-BOS-JFK\",\n      \"airlineCode\": \"AA\",\n      \"flightNumber\": \"AA100\",\n      \"registration\": \"N12345\",\n      \"departureDate\": \"2025-03-14\",\n      \"origin\": \"BOS\",\n      \"destination\": \"JFK\",\n      \"scheduledDeparture\": \"2025-03-14T10:00:00Z\",\n      \"actualOut\": \"2025-03-14T10:05:00Z\",\n      \"actualOff\": \"2025-03-14T10:18:00Z\",\n      \"status\": \"IN_FLIGHT\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2967c1f2-7d15-43c4-8cb5-4c2a9feac04f",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "flights"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "airlineCode",
+                      "value": "AA"
+                    },
+                    {
+                      "key": "flightNumber",
+                      "value": "AA100"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "2025-03-14"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "BOS"
+                    },
+                    {
+                      "key": "destination",
+                      "value": "JFK"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid message type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.arinconline.collinsaerospace.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c5705d3b-d6c5-41e2-aed7-e84228a8f833",
+    "name": "Collins Aerospace ARINC Messaging Flights API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and data exchange. Supports ACARS, OOOI, flight messages, weather data, and operational communications between aircraft, airlines, airports, and ground operations. Part of the legacy United Technologies / RTX Collins Aerospace digital platform.\n\nContact Support:\n Name: Collins Aerospace ARINC Support",
+      "type": "text/plain"
+    }
+  }
+}
