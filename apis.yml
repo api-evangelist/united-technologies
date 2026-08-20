@@ -63,6 +63,8 @@ apis:
     https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange
   baseURL: https://api.arinconline.collinsaerospace.com
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
