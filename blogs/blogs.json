@@ -5,10 +5,10 @@
       "source": "https://www.rtx.com/rss-feeds/news",
       "feed_url": "https://www.rtx.com/rss-feeds/news",
       "title": "",
-      "saved": 3,
-      "method": "none"
+      "saved": 0,
+      "method": "feed"
     }
   ],
-  "fetched": "2026-08-15T12:11:08Z",
-  "post_count": 75
+  "fetched": "2026-08-22T20:20:02Z",
+  "post_count": 76
 }
