@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Collins Aerospace ARINC Messaging Flights API
   description: The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and data exchange. Supports ACARS, OOOI, flight messages, weather data, and operational communications between aircraft, airlines, airports, and ground operations. Part of the legacy United Technologies / RTX Collins Aerospace digital platform.
@@ -96,31 +96,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FlightList:
-      type: object
-      description: Paginated list of flights.
-      properties:
-        total:
-          type: integer
-          description: Total number of matching flights.
-          example: 20
-        flights:
-          type: array
-          description: List of flight records.
-          items:
-            $ref: '#/components/schemas/Flight'
-    Error:
-      type: object
-      description: API error response.
-      properties:
-        code:
-          type: string
-          description: Error code.
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Invalid message type
     Flight:
       type: object
       description: Aviation flight record with OOOI event times.
@@ -190,6 +165,31 @@ components:
           - ARRIVED
           - CANCELLED
           example: IN_FLIGHT
+    FlightList:
+      type: object
+      description: Paginated list of flights.
+      properties:
+        total:
+          type: integer
+          description: Total number of matching flights.
+          example: 20
+        flights:
+          type: array
+          description: List of flight records.
+          items:
+            $ref: '#/components/schemas/Flight'
+    Error:
+      type: object
+      description: API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Invalid message type
   securitySchemes:
     bearerAuth:
       type: http
