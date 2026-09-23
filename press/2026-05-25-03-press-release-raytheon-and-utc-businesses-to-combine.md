@@ -1,7 +1,9 @@
 ---
 title: 'Press Release: Raytheon and UTC businesses to combine'
 url: https://runwaygirlnetwork.com/2019/06/press-release-raytheon-and-utc-businesses-to-combine/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"United Technologies" press release artificial intelligence'
 position: 3
 source: serpapi-google

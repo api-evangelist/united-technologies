@@ -1,7 +1,9 @@
 ---
 title: United Technologies - Oak Ridge Leadership Computing Facility
 url: https://www.olcf.ornl.gov/tag/united-technologies/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"United Technologies" press release artificial intelligence'
 position: 5
 source: serpapi-google

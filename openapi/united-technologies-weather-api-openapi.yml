@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Collins Aerospace ARINC Messaging Flights Weather API
+  title: Collins Aerospace ARINC Messaging Weather API
   description: The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and data exchange. Supports ACARS, OOOI, flight messages, weather data, and operational communications between aircraft, airlines, airports, and ground operations. Part of the legacy United Technologies / RTX Collins Aerospace digital platform.
   version: '1.0'
   contact:
@@ -90,6 +90,35 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      type: object
+      description: API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Invalid message type
+    CloudLayer:
+      type: object
+      description: A cloud layer in a weather observation.
+      properties:
+        coverage:
+          type: string
+          description: Cloud coverage code.
+          enum:
+          - FEW
+          - SCT
+          - BKN
+          - OVC
+          example: SCT
+        altitude:
+          type: integer
+          description: Cloud base altitude in feet MSL.
+          example: 6000
     WeatherData:
       type: object
       description: Aviation weather observation or forecast.
@@ -134,35 +163,6 @@ components:
           description: Cloud layers.
           items:
             $ref: '#/components/schemas/CloudLayer'
-    Error:
-      type: object
-      description: API error response.
-      properties:
-        code:
-          type: string
-          description: Error code.
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Invalid message type
-    CloudLayer:
-      type: object
-      description: A cloud layer in a weather observation.
-      properties:
-        coverage:
-          type: string
-          description: Cloud coverage code.
-          enum:
-          - FEW
-          - SCT
-          - BKN
-          - OVC
-          example: SCT
-        altitude:
-          type: integer
-          description: Cloud base altitude in feet MSL.
-          example: 6000
   securitySchemes:
     bearerAuth:
       type: http

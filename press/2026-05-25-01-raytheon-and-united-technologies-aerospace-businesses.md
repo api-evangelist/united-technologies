@@ -1,7 +1,9 @@
 ---
 title: Raytheon and United Technologies Aerospace Businesses ...
 url: https://www.prnewswire.com/news-releases/raytheon-and-united-technologies-aerospace-businesses-to-combine-in-merger-of-equals-300864268.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"United Technologies" press release artificial intelligence'
 position: 1
 source: serpapi-google
