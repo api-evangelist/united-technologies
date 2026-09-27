@@ -96,18 +96,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Error:
-      type: object
-      description: API error response.
-      properties:
-        code:
-          type: string
-          description: Error code.
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Invalid message type
     Flight:
       type: object
       description: Aviation flight record with OOOI event times.
@@ -177,6 +165,18 @@ components:
           - ARRIVED
           - CANCELLED
           example: IN_FLIGHT
+    Error:
+      type: object
+      description: API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Invalid message type
     FlightList:
       type: object
       description: Paginated list of flights.

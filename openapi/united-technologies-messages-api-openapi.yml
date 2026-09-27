@@ -185,6 +185,31 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    MessageList:
+      type: object
+      description: Paginated list of ARINC messages.
+      properties:
+        total:
+          type: integer
+          description: Total number of matching messages.
+          example: 500
+        messages:
+          type: array
+          description: List of message records.
+          items:
+            $ref: '#/components/schemas/Message'
+    Error:
+      type: object
+      description: API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Invalid message type
     SendMessageResponse:
       type: object
       description: Response confirming message was queued for transmission.
@@ -207,31 +232,6 @@ components:
           format: date-time
           description: Timestamp when message was queued.
           example: '2025-03-14T10:31:00Z'
-    Error:
-      type: object
-      description: API error response.
-      properties:
-        code:
-          type: string
-          description: Error code.
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Invalid message type
-    MessageList:
-      type: object
-      description: Paginated list of ARINC messages.
-      properties:
-        total:
-          type: integer
-          description: Total number of matching messages.
-          example: 500
-        messages:
-          type: array
-          description: List of message records.
-          items:
-            $ref: '#/components/schemas/Message'
     SendMessageRequest:
       type: object
       required:
