@@ -96,6 +96,19 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    FlightList:
+      type: object
+      description: Paginated list of flights.
+      properties:
+        total:
+          type: integer
+          description: Total number of matching flights.
+          example: 20
+        flights:
+          type: array
+          description: List of flight records.
+          items:
+            $ref: '#/components/schemas/Flight'
     Flight:
       type: object
       description: Aviation flight record with OOOI event times.
@@ -177,19 +190,6 @@ components:
           type: string
           description: Human-readable error message.
           example: Invalid message type
-    FlightList:
-      type: object
-      description: Paginated list of flights.
-      properties:
-        total:
-          type: integer
-          description: Total number of matching flights.
-          example: 20
-        flights:
-          type: array
-          description: List of flight records.
-          items:
-            $ref: '#/components/schemas/Flight'
   securitySchemes:
     bearerAuth:
       type: http

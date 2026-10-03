@@ -107,18 +107,6 @@ components:
           type: integer
           description: Cloud base altitude in feet MSL.
           example: 6000
-    Error:
-      type: object
-      description: API error response.
-      properties:
-        code:
-          type: string
-          description: Error code.
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Invalid message type
     WeatherData:
       type: object
       description: Aviation weather observation or forecast.
@@ -163,6 +151,18 @@ components:
           description: Cloud layers.
           items:
             $ref: '#/components/schemas/CloudLayer'
+    Error:
+      type: object
+      description: API error response.
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Invalid message type
   securitySchemes:
     bearerAuth:
       type: http
