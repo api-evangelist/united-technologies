@@ -90,23 +90,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CloudLayer:
-      type: object
-      description: A cloud layer in a weather observation.
-      properties:
-        coverage:
-          type: string
-          description: Cloud coverage code.
-          enum:
-          - FEW
-          - SCT
-          - BKN
-          - OVC
-          example: SCT
-        altitude:
-          type: integer
-          description: Cloud base altitude in feet MSL.
-          example: 6000
     WeatherData:
       type: object
       description: Aviation weather observation or forecast.
@@ -151,6 +134,23 @@ components:
           description: Cloud layers.
           items:
             $ref: '#/components/schemas/CloudLayer'
+    CloudLayer:
+      type: object
+      description: A cloud layer in a weather observation.
+      properties:
+        coverage:
+          type: string
+          description: Cloud coverage code.
+          enum:
+          - FEW
+          - SCT
+          - BKN
+          - OVC
+          example: SCT
+        altitude:
+          type: integer
+          description: Cloud base altitude in feet MSL.
+          example: 6000
     Error:
       type: object
       description: API error response.
