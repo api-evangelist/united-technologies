@@ -119,6 +119,8 @@ apis:
   - type: Examples
     url: examples/arinc-messaging-message-example.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/united-technologies/overview
   - type: Plans
     url: plans/united-technologies-plans-pricing.yml
   - type: RateLimits
