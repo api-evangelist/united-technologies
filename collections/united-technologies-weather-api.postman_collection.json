@@ -1,245 +1,248 @@
 {
+  "info": {
+    "_postman_id": "0f02093f-2fe6-48e6-b175-144de572ebcc",
+    "name": "Collins Aerospace ARINC Messaging Weather API",
+    "description": "The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and data exchange. Supports ACARS, OOOI, flight messages, weather data, and operational communications between aircraft, airlines, airports, and ground operations. Part of the legacy United Technologies / RTX Collins Aerospace digital platform.\n\nContact Support:\n Name: Collins Aerospace ARINC Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:37:17.000Z",
+    "updatedAt": "2026-10-21T20:37:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0f02093f-2fe6-48e6-b175-144de572ebcc"
+  },
   "item": [
     {
-      "id": "6665022a-d251-449c-998e-528b67665ce3",
-      "name": "Weather",
-      "description": {
-        "content": "Aviation weather data operations",
-        "type": "text/plain"
-      },
+      "name": "weather",
       "item": [
         {
-          "id": "ad6cbe31-1208-4bf9-a3ee-d9b6b3ed59cc",
           "name": "Collins Aerospace ARINC Get Aviation Weather",
+          "id": "65335803-02dd-4c74-b714-7578d756ba4e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Collins Aerospace ARINC Get Aviation Weather",
-            "description": {
-              "content": "Returns aviation weather data including METARs, TAFs, SIGMETs, PIREPs, and graphical weather information for specified airports or regions.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "weather"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "stationType",
-                  "value": "<string>",
-                  "description": "(Required) Type of weather data requested."
-                },
-                {
-                  "disabled": false,
-                  "key": "station",
-                  "value": "<string>",
-                  "description": "ICAO station identifier."
-                },
-                {
-                  "disabled": false,
-                  "key": "region",
-                  "value": "<string>",
-                  "description": "Geographic region code."
-                }
-              ],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/weather?stationType=WINDS_ALOFT&station=<string>&region=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "weather"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Type of weather data requested.",
+                  "key": "stationType",
+                  "value": "WINDS_ALOFT"
+                },
+                {
+                  "description": "ICAO station identifier.",
+                  "key": "station",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Geographic region code.",
+                  "key": "region",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns aviation weather data including METARs, TAFs, SIGMETs, PIREPs, and graphical weather information for specified airports or regions."
           },
           "response": [
             {
-              "id": "17174f64-477a-443b-b79e-cc29d1cc900c",
+              "id": "6d0f0201-0dbc-4b0e-bbc3-dcf61063dd5f",
               "name": "Weather data returned successfully.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "weather"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "stationType",
-                      "value": "METAR"
-                    },
-                    {
-                      "key": "station",
-                      "value": "KBOS"
-                    },
-                    {
-                      "key": "region",
-                      "value": "CONUS"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/weather?stationType=WINDS_ALOFT&station=<string>&region=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "weather"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Type of weather data requested.",
+                      "key": "stationType",
+                      "value": "WINDS_ALOFT"
+                    },
+                    {
+                      "description": "ICAO station identifier.",
+                      "key": "station",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Geographic region code.",
+                      "key": "region",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"station\": \"KBOS\",\n  \"type\": \"METAR\",\n  \"observationTime\": \"2025-03-14T10:00:00Z\",\n  \"rawText\": \"KBOS 141000Z 27015KT 10SM SCT060 BKN090 12/02 A3012 RMK AO2\",\n  \"windDirection\": 270,\n  \"windSpeed\": 15,\n  \"visibility\": 10,\n  \"clouds\": [\n    {\n      \"coverage\": \"SCT\",\n      \"altitude\": 6000\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"station\": \"<string>\",\n  \"type\": \"SIGMET\",\n  \"observationTime\": \"<dateTime>\",\n  \"rawText\": \"<string>\",\n  \"windDirection\": \"<integer>\",\n  \"windSpeed\": \"<integer>\",\n  \"visibility\": \"<number>\",\n  \"clouds\": [\n    {\n      \"coverage\": \"SCT\",\n      \"altitude\": \"<integer>\"\n    },\n    {\n      \"coverage\": \"BKN\",\n      \"altitude\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:37:17.000Z",
+              "updatedAt": "2026-10-21T20:37:17.000Z",
+              "uid": "35240-6d0f0201-0dbc-4b0e-bbc3-dcf61063dd5f"
             },
             {
-              "id": "baaaf7b8-0464-41f9-b142-3197eaba91cd",
+              "id": "b55de540-c1a6-4a96-ac93-8c45e30b253a",
               "name": "Bad request.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "weather"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "stationType",
-                      "value": "METAR"
-                    },
-                    {
-                      "key": "station",
-                      "value": "KBOS"
-                    },
-                    {
-                      "key": "region",
-                      "value": "CONUS"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/weather?stationType=WINDS_ALOFT&station=<string>&region=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "weather"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Type of weather data requested.",
+                      "key": "stationType",
+                      "value": "WINDS_ALOFT"
+                    },
+                    {
+                      "description": "ICAO station identifier.",
+                      "key": "station",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Geographic region code.",
+                      "key": "region",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid message type\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:37:17.000Z",
+              "updatedAt": "2026-10-21T20:37:17.000Z",
+              "uid": "35240-b55de540-c1a6-4a96-ac93-8c45e30b253a"
             },
             {
-              "id": "ee67faeb-1efd-41ef-b84b-fa54fb01bfce",
+              "id": "a9328089-f983-4eaa-8496-347c07b20144",
               "name": "Unauthorized.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "weather"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "stationType",
-                      "value": "METAR"
-                    },
-                    {
-                      "key": "station",
-                      "value": "KBOS"
-                    },
-                    {
-                      "key": "region",
-                      "value": "CONUS"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/weather?stationType=WINDS_ALOFT&station=<string>&region=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "weather"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Type of weather data requested.",
+                      "key": "stationType",
+                      "value": "WINDS_ALOFT"
+                    },
+                    {
+                      "description": "ICAO station identifier.",
+                      "key": "station",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Geographic region code.",
+                      "key": "region",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid message type\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:37:17.000Z",
+              "updatedAt": "2026-10-21T20:37:17.000Z",
+              "uid": "35240-a9328089-f983-4eaa-8496-347c07b20144"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:37:17.000Z",
+          "updatedAt": "2026-10-21T20:37:17.000Z",
+          "uid": "35240-65335803-02dd-4c74-b714-7578d756ba4e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.arinconline.collinsaerospace.com",
-      "key": "baseUrl"
+      "id": "ea65aa34-9d01-43d6-9050-1bd9b4490180",
+      "createdAt": "2026-10-21T20:37:17.000Z",
+      "updatedAt": "2026-10-21T20:37:17.000Z",
+      "uid": "35240-ea65aa34-9d01-43d6-9050-1bd9b4490180"
     }
   ],
   "auth": {
@@ -247,17 +250,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "55513f22-6143-48fe-a4f6-585ccdb794f2",
-    "name": "Collins Aerospace ARINC Messaging Flights Weather API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and data exchange. Supports ACARS, OOOI, flight messages, weather data, and operational communications between aircraft, airlines, airports, and ground operations. Part of the legacy United Technologies / RTX Collins Aerospace digital platform.\n\nContact Support:\n Name: Collins Aerospace ARINC Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.arinconline.collinsaerospace.com"
     }
-  }
+  ]
 }

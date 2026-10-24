@@ -1,344 +1,351 @@
 {
+  "info": {
+    "_postman_id": "ea5db6fa-639b-4f3b-bb12-45207b848b31",
+    "name": "Collins Aerospace ARINC Messaging Messages API",
+    "description": "The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and data exchange. Supports ACARS, OOOI, flight messages, weather data, and operational communications between aircraft, airlines, airports, and ground operations. Part of the legacy United Technologies / RTX Collins Aerospace digital platform.\n\nContact Support:\n Name: Collins Aerospace ARINC Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:37:10.000Z",
+    "updatedAt": "2026-10-21T20:37:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ea5db6fa-639b-4f3b-bb12-45207b848b31"
+  },
   "item": [
     {
-      "id": "25569dc0-ce56-41db-ad11-4c0c07382a78",
-      "name": "Messages",
-      "description": {
-        "content": "Aviation message transmission and retrieval operations",
-        "type": "text/plain"
-      },
+      "name": "messages",
       "item": [
         {
-          "id": "6eb64178-a847-47c0-a7ee-25359206e01d",
           "name": "Collins Aerospace ARINC List Messages",
+          "id": "a32603f9-ec8e-413c-b2f7-cfbcf604f34a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Collins Aerospace ARINC List Messages",
-            "description": {
-              "content": "Returns a list of ARINC aviation messages filtered by message type, registration, airline code, and date range.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "messages"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "messageType",
-                  "value": "<string>",
-                  "description": "Filter by ARINC message type (ACARS, OOOI, etc.)."
-                },
-                {
-                  "disabled": false,
-                  "key": "registration",
-                  "value": "<string>",
-                  "description": "Aircraft registration number."
-                },
-                {
-                  "disabled": false,
-                  "key": "airlineCode",
-                  "value": "<string>",
-                  "description": "IATA airline code."
-                },
-                {
-                  "disabled": false,
-                  "key": "flightNumber",
-                  "value": "<string>",
-                  "description": "Flight number."
-                },
-                {
-                  "disabled": false,
-                  "key": "fromTime",
-                  "value": "<dateTime>",
-                  "description": "Start of time range (ISO 8601)."
-                },
-                {
-                  "disabled": false,
-                  "key": "toTime",
-                  "value": "<dateTime>",
-                  "description": "End of time range (ISO 8601)."
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "<integer>",
-                  "description": "Maximum number of messages to return."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<integer>",
-                  "description": "Pagination offset."
-                }
-              ],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8cf4815b-ea33-478a-9924-7d13c1b9cb4e",
-              "name": "Messages returned successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "messageType",
-                      "value": "ACARS"
-                    },
-                    {
-                      "key": "registration",
-                      "value": "N12345"
-                    },
-                    {
-                      "key": "airlineCode",
-                      "value": "AA"
-                    },
-                    {
-                      "key": "flightNumber",
-                      "value": "AA100"
-                    },
-                    {
-                      "key": "fromTime",
-                      "value": "2025-03-14T00:00:00Z"
-                    },
-                    {
-                      "key": "toTime",
-                      "value": "2025-03-14T23:59:59Z"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "100"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"total\": 1,\n  \"messages\": [\n    {\n      \"messageId\": \"MSG-20250314-001234\",\n      \"messageType\": \"ACARS\",\n      \"registration\": \"N12345\",\n      \"airlineCode\": \"AA\",\n      \"flightNumber\": \"AA100\",\n      \"timestamp\": \"2025-03-14T10:30:00Z\",\n      \"content\": \"/AA AA100 BOS JFK 1030\",\n      \"direction\": \"DOWNLINK\",\n      \"origin\": \"BOS\",\n      \"destination\": \"JFK\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "afbb7324-1aa9-4720-a2f4-2703633dd483",
-              "name": "Bad request.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "messageType",
-                      "value": "ACARS"
-                    },
-                    {
-                      "key": "registration",
-                      "value": "N12345"
-                    },
-                    {
-                      "key": "airlineCode",
-                      "value": "AA"
-                    },
-                    {
-                      "key": "flightNumber",
-                      "value": "AA100"
-                    },
-                    {
-                      "key": "fromTime",
-                      "value": "2025-03-14T00:00:00Z"
-                    },
-                    {
-                      "key": "toTime",
-                      "value": "2025-03-14T23:59:59Z"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "100"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid message type\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0b20b347-8021-4aa6-bd4b-db168a28ca2f",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "messageType",
-                      "value": "ACARS"
-                    },
-                    {
-                      "key": "registration",
-                      "value": "N12345"
-                    },
-                    {
-                      "key": "airlineCode",
-                      "value": "AA"
-                    },
-                    {
-                      "key": "flightNumber",
-                      "value": "AA100"
-                    },
-                    {
-                      "key": "fromTime",
-                      "value": "2025-03-14T00:00:00Z"
-                    },
-                    {
-                      "key": "toTime",
-                      "value": "2025-03-14T23:59:59Z"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "100"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid message type\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bf20b0b4-5f38-4046-a982-743f0d3a82b0",
-          "name": "Collins Aerospace ARINC Send Message",
-          "request": {
-            "name": "Collins Aerospace ARINC Send Message",
-            "description": {
-              "content": "Sends an ARINC uplink message to an aircraft or ground station via the ARINC Global Network.",
-              "type": "text/plain"
-            },
             "url": {
-              "path": [
-                "messages"
-              ],
+              "raw": "{{baseUrl}}/messages?messageType=WEATHER&registration=<string>&airlineCode=<string>&flightNumber=<string>&fromTime=<dateTime>&toTime=<dateTime>&limit=<integer>&offset=<integer>",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "messages"
+              ],
+              "query": [
+                {
+                  "description": "Filter by ARINC message type (ACARS, OOOI, etc.).",
+                  "key": "messageType",
+                  "value": "WEATHER"
+                },
+                {
+                  "description": "Aircraft registration number.",
+                  "key": "registration",
+                  "value": "<string>"
+                },
+                {
+                  "description": "IATA airline code.",
+                  "key": "airlineCode",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Flight number.",
+                  "key": "flightNumber",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Start of time range (ISO 8601).",
+                  "key": "fromTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "End of time range (ISO 8601).",
+                  "key": "toTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Maximum number of messages to return.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Pagination offset.",
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ]
             },
+            "description": "Returns a list of ARINC aviation messages filtered by message type, registration, airline code, and date range."
+          },
+          "response": [
+            {
+              "id": "c98a3a61-a681-4b5d-bff4-b8225014424c",
+              "name": "Messages returned successfully.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/messages?messageType=WEATHER&registration=<string>&airlineCode=<string>&flightNumber=<string>&fromTime=<dateTime>&toTime=<dateTime>&limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "messages"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by ARINC message type (ACARS, OOOI, etc.).",
+                      "key": "messageType",
+                      "value": "WEATHER"
+                    },
+                    {
+                      "description": "Aircraft registration number.",
+                      "key": "registration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IATA airline code.",
+                      "key": "airlineCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Flight number.",
+                      "key": "flightNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Start of time range (ISO 8601).",
+                      "key": "fromTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "End of time range (ISO 8601).",
+                      "key": "toTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Maximum number of messages to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination offset.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"messages\": [\n    {\n      \"messageId\": \"<string>\",\n      \"messageType\": \"ATC\",\n      \"registration\": \"<string>\",\n      \"airlineCode\": \"<string>\",\n      \"flightNumber\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"content\": \"<string>\",\n      \"direction\": \"UPLINK\",\n      \"origin\": \"<string>\",\n      \"destination\": \"<string>\"\n    },\n    {\n      \"messageId\": \"<string>\",\n      \"messageType\": \"OOOI\",\n      \"registration\": \"<string>\",\n      \"airlineCode\": \"<string>\",\n      \"flightNumber\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"content\": \"<string>\",\n      \"direction\": \"DOWNLINK\",\n      \"origin\": \"<string>\",\n      \"destination\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:37:11.000Z",
+              "updatedAt": "2026-10-21T20:37:11.000Z",
+              "uid": "35240-c98a3a61-a681-4b5d-bff4-b8225014424c"
+            },
+            {
+              "id": "b5c7f97b-30da-42dd-8e26-6b1431fb25c1",
+              "name": "Bad request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/messages?messageType=WEATHER&registration=<string>&airlineCode=<string>&flightNumber=<string>&fromTime=<dateTime>&toTime=<dateTime>&limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "messages"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by ARINC message type (ACARS, OOOI, etc.).",
+                      "key": "messageType",
+                      "value": "WEATHER"
+                    },
+                    {
+                      "description": "Aircraft registration number.",
+                      "key": "registration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IATA airline code.",
+                      "key": "airlineCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Flight number.",
+                      "key": "flightNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Start of time range (ISO 8601).",
+                      "key": "fromTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "End of time range (ISO 8601).",
+                      "key": "toTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Maximum number of messages to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination offset.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:37:11.000Z",
+              "updatedAt": "2026-10-21T20:37:11.000Z",
+              "uid": "35240-b5c7f97b-30da-42dd-8e26-6b1431fb25c1"
+            },
+            {
+              "id": "90a9a8ca-7592-4ecc-a911-248643ce32f8",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/messages?messageType=WEATHER&registration=<string>&airlineCode=<string>&flightNumber=<string>&fromTime=<dateTime>&toTime=<dateTime>&limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "messages"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by ARINC message type (ACARS, OOOI, etc.).",
+                      "key": "messageType",
+                      "value": "WEATHER"
+                    },
+                    {
+                      "description": "Aircraft registration number.",
+                      "key": "registration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IATA airline code.",
+                      "key": "airlineCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Flight number.",
+                      "key": "flightNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Start of time range (ISO 8601).",
+                      "key": "fromTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "End of time range (ISO 8601).",
+                      "key": "toTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Maximum number of messages to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination offset.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:37:11.000Z",
+              "updatedAt": "2026-10-21T20:37:11.000Z",
+              "uid": "35240-90a9a8ca-7592-4ecc-a911-248643ce32f8"
+            }
+          ],
+          "createdAt": "2026-10-21T20:37:11.000Z",
+          "updatedAt": "2026-10-21T20:37:11.000Z",
+          "uid": "35240-a32603f9-ec8e-413c-b2f7-cfbcf604f34a"
+        },
+        {
+          "name": "Collins Aerospace ARINC Send Message",
+          "id": "84393bb0-0ecb-4a46-ab0b-4d7429ff97c5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -349,188 +356,206 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"messageType\": \"<string>\",\n  \"registration\": \"<string>\",\n  \"content\": \"<string>\",\n  \"airlineCode\": \"<string>\",\n  \"flightNumber\": \"<string>\",\n  \"priority\": \"<string>\"\n}",
+              "raw": "{\n  \"messageType\": \"<string>\",\n  \"registration\": \"<string>\",\n  \"content\": \"<string>\",\n  \"airlineCode\": \"<string>\",\n  \"flightNumber\": \"<string>\",\n  \"priority\": \"LOW\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/messages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "messages"
+              ]
+            },
+            "description": "Sends an ARINC uplink message to an aircraft or ground station via the ARINC Global Network."
           },
           "response": [
             {
-              "id": "25f822b4-a456-4af1-ac21-d2e62de9ef85",
+              "id": "cfacfa7a-45b4-4361-babc-122b218220b1",
               "name": "Message sent successfully.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"messageType\": \"ACARS\",\n  \"registration\": \"N12345\",\n  \"airlineCode\": \"AA\",\n  \"flightNumber\": \"AA100\",\n  \"content\": \"GATE CHANGE TO B22\",\n  \"priority\": \"NORMAL\"\n}",
+                  "raw": "{\n  \"messageType\": \"<string>\",\n  \"registration\": \"<string>\",\n  \"content\": \"<string>\",\n  \"airlineCode\": \"<string>\",\n  \"flightNumber\": \"<string>\",\n  \"priority\": \"LOW\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "messages"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"messageId\": \"MSG-20250314-001235\",\n  \"status\": \"QUEUED\",\n  \"timestamp\": \"2025-03-14T10:31:00Z\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"messageId\": \"<string>\",\n  \"status\": \"SENT\",\n  \"timestamp\": \"<dateTime>\"\n}",
+              "createdAt": "2026-10-21T20:37:11.000Z",
+              "updatedAt": "2026-10-21T20:37:11.000Z",
+              "uid": "35240-cfacfa7a-45b4-4361-babc-122b218220b1"
             },
             {
-              "id": "f165a228-d5ca-414e-9344-47af5cf49b26",
+              "id": "8889becf-8517-4b13-b071-23833b3f3313",
               "name": "Bad request.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"messageType\": \"ACARS\",\n  \"registration\": \"N12345\",\n  \"airlineCode\": \"AA\",\n  \"flightNumber\": \"AA100\",\n  \"content\": \"GATE CHANGE TO B22\",\n  \"priority\": \"NORMAL\"\n}",
+                  "raw": "{\n  \"messageType\": \"<string>\",\n  \"registration\": \"<string>\",\n  \"content\": \"<string>\",\n  \"airlineCode\": \"<string>\",\n  \"flightNumber\": \"<string>\",\n  \"priority\": \"LOW\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "messages"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid message type\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:37:11.000Z",
+              "updatedAt": "2026-10-21T20:37:11.000Z",
+              "uid": "35240-8889becf-8517-4b13-b071-23833b3f3313"
             },
             {
-              "id": "bf3db50f-ec62-4bf2-a733-2e17661d4d36",
+              "id": "19c1bf48-62d2-467e-bf5d-da525368c2d9",
               "name": "Unauthorized.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"messageType\": \"ACARS\",\n  \"registration\": \"N12345\",\n  \"airlineCode\": \"AA\",\n  \"flightNumber\": \"AA100\",\n  \"content\": \"GATE CHANGE TO B22\",\n  \"priority\": \"NORMAL\"\n}",
+                  "raw": "{\n  \"messageType\": \"<string>\",\n  \"registration\": \"<string>\",\n  \"content\": \"<string>\",\n  \"airlineCode\": \"<string>\",\n  \"flightNumber\": \"<string>\",\n  \"priority\": \"LOW\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "messages"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid message type\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:37:11.000Z",
+              "updatedAt": "2026-10-21T20:37:11.000Z",
+              "uid": "35240-19c1bf48-62d2-467e-bf5d-da525368c2d9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:37:11.000Z",
+          "updatedAt": "2026-10-21T20:37:11.000Z",
+          "uid": "35240-84393bb0-0ecb-4a46-ab0b-4d7429ff97c5"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.arinconline.collinsaerospace.com",
-      "key": "baseUrl"
+      "id": "f0b627b2-1e14-40b5-a70e-7f2d045686d3",
+      "createdAt": "2026-10-21T20:37:11.000Z",
+      "updatedAt": "2026-10-21T20:37:11.000Z",
+      "uid": "35240-f0b627b2-1e14-40b5-a70e-7f2d045686d3"
     }
   ],
   "auth": {
@@ -538,17 +563,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "e7cb7b73-05b9-4c13-a9a1-d7e2a84626ac",
-    "name": "Collins Aerospace ARINC Messaging Flights Messages API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and data exchange. Supports ACARS, OOOI, flight messages, weather data, and operational communications between aircraft, airlines, airports, and ground operations. Part of the legacy United Technologies / RTX Collins Aerospace digital platform.\n\nContact Support:\n Name: Collins Aerospace ARINC Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.arinconline.collinsaerospace.com"
     }
-  }
+  ]
 }
