@@ -1,4 +1,4 @@
-# United Technologies (united-technologies)
+# United Technologies
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,62 +66,177 @@
 
 United Technologies Corporation (UTC) was an American multinational conglomerate that merged with Raytheon Company in 2020 to form Raytheon Technologies, later renamed RTX Corporation in 2023. Prior to the merger, UTC's major subsidiaries included Otis Elevator (now independent), Carrier Global (now independent), Pratt & Whitney, and Collins Aerospace. Today, Collins Aerospace (formerly UTC Aerospace Systems and Rockwell Collins) provides aviation connectivity and data exchange services through the ARINC Digital Exchange platform, including messaging, flight operations, and weather data APIs for commercial aviation.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/united-technologies/refs/heads/main/apis.yml)
+**Areas:** Aerospace · Defense · Aviation · Manufacturing · Connectivity · Fortune 100
 
-## Tags
+## United Technologies on APIs.io
 
-- Aerospace
-- Defense
-- Aviation
-- Manufacturing
-- Connectivity
+Everything profiled for United Technologies is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/united-technologies/](https://apis.io/providers/united-technologies/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Modified:** 2026-05-19
+- [United Technologies Flights API](https://apis.io/apis/united-technologies/united-technologies-flights-api/) — Flight information and tracking operations
+- [United Technologies Messages API](https://apis.io/apis/united-technologies/united-technologies-messages-api/) — Aviation message transmission and retrieval operations
+- [United Technologies Weather API](https://apis.io/apis/united-technologies/united-technologies-weather-api/) — Aviation weather data operations
 
-## APIs
+### Published properties
 
-### Collins Aerospace ARINC Messaging API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Collins Aerospace ARINC Messaging API provides access to the ARINC Global Network for aviation messaging and data exchange. Supports ACARS, OOOI flight events, aviation weather, and operational communications between aircraft, airlines, airports, and ground operations. Part of the Collins Aerospace ARINC Digital Exchange platform.
+#### Agentic access (1)
 
-- **Human URL:** [https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange](https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange)
-- **Base URL:** `https://api.arinconline.collinsaerospace.com`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [United Technologies Agentic Access](https://apis.io/agentic-access/united-technologies/united-technologies-agentic-access/)
 
-- Aviation
-- Messaging
-- ACARS
-- OOOI
-- Aerospace
+#### JSON Schema (8)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange/arinc-messaging)
-- [OpenAPI](openapi/united-technologies-arinc-messaging-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/united-technologies-arinc-messaging.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/united-technologies-arinc-messaging.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/arinc-messaging-message-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/arinc-messaging-flight-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/arinc-messaging-message-structure.json)
-- [JSON-LD](json-ld/united-technologies-arinc-messaging-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Example](examples/arinc-messaging-message-example.json)
+- [CloudLayer](https://apis.io/schemas/united-technologies/arinc-messaging-cloud-layer/)
+- [Flight](https://apis.io/schemas/united-technologies/arinc-messaging-flight/)
+- [FlightList](https://apis.io/schemas/united-technologies/arinc-messaging-flight-list/)
+- [Message](https://apis.io/schemas/united-technologies/arinc-messaging-message/)
+- [MessageList](https://apis.io/schemas/united-technologies/arinc-messaging-message-list/)
+- [SendMessageRequest](https://apis.io/schemas/united-technologies/arinc-messaging-send-message-request/)
+- [SendMessageResponse](https://apis.io/schemas/united-technologies/arinc-messaging-send-message-response/)
+- [WeatherData](https://apis.io/schemas/united-technologies/arinc-messaging-weather-data/)
 
-## Common Properties
+#### JSON Structure (8)
 
-- [LinkedIn](https://www.linkedin.com/company/united-technologies)
+Data models expressed in JSON Structure.
+
+- [Arinc Messaging Cloud Layer Structure](https://apis.io/json-structure/united-technologies/arinc-messaging-cloud-layer-structure/)
+- [Arinc Messaging Flight List Structure](https://apis.io/json-structure/united-technologies/arinc-messaging-flight-list-structure/)
+- [Arinc Messaging Flight Structure](https://apis.io/json-structure/united-technologies/arinc-messaging-flight-structure/)
+- [Arinc Messaging Message List Structure](https://apis.io/json-structure/united-technologies/arinc-messaging-message-list-structure/)
+- [Arinc Messaging Message Structure](https://apis.io/json-structure/united-technologies/arinc-messaging-message-structure/)
+- [Arinc Messaging Send Message Request Structure](https://apis.io/json-structure/united-technologies/arinc-messaging-send-message-request-structure/)
+- [Arinc Messaging Send Message Response Structure](https://apis.io/json-structure/united-technologies/arinc-messaging-send-message-response-structure/)
+- [Arinc Messaging Weather Data Structure](https://apis.io/json-structure/united-technologies/arinc-messaging-weather-data-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [United Technologies Arinc Messaging Context](https://apis.io/jsonld/united-technologies/united-technologies-arinc-messaging-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [United Technologies Vocabulary](https://apis.io/vocabularies/united-technologies/united-technologies-vocabulary/)
+
+#### Examples (8)
+
+Example requests and responses.
+
+- [Arinc Messaging Cloud Layer Example](https://apis.io/examples/united-technologies/arinc-messaging-cloud-layer-example/)
+- [Arinc Messaging Flight Example](https://apis.io/examples/united-technologies/arinc-messaging-flight-example/)
+- [Arinc Messaging Flight List Example](https://apis.io/examples/united-technologies/arinc-messaging-flight-list-example/)
+- [Arinc Messaging Message Example](https://apis.io/examples/united-technologies/arinc-messaging-message-example/)
+- [Arinc Messaging Message List Example](https://apis.io/examples/united-technologies/arinc-messaging-message-list-example/)
+- [Arinc Messaging Send Message Request Example](https://apis.io/examples/united-technologies/arinc-messaging-send-message-request-example/)
+- [Arinc Messaging Send Message Response Example](https://apis.io/examples/united-technologies/arinc-messaging-send-message-response-example/)
+- [Arinc Messaging Weather Data Example](https://apis.io/examples/united-technologies/arinc-messaging-weather-data-example/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Collins Aerospace ARINC Messaging API](https://apis.io/collections/united-technologies/open-united-technologies-arinc-messaging/)
+- [Collins Aerospace ARINC Messaging Flights API](https://apis.io/collections/united-technologies/open-united-technologies-flights-api/)
+- [Collins Aerospace ARINC Messaging Flights Messages API](https://apis.io/collections/united-technologies/open-united-technologies-messages-api/)
+- [Collins Aerospace ARINC Messaging Flights Weather API](https://apis.io/collections/united-technologies/open-united-technologies-weather-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [United Technologies — jsonschema rules](https://apis.io/rules/united-technologies/united-technologies-jsonschema-spectral-rules/)
+- [United Technologies API Rules](https://apis.io/rules/united-technologies/united-technologies-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [United Technologies Authentication](https://apis.io/security/united-technologies/united-technologies-authentication/)
+- [United Technologies Domain Security](https://apis.io/security/united-technologies/united-technologies-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [United Technologies Plans Pricing](https://apis.io/plans/united-technologies/united-technologies-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [United Technologies Rate Limits](https://apis.io/rate-limits/united-technologies/united-technologies-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [United Technologies Finops](https://apis.io/finops/united-technologies/united-technologies-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.rtx.com/collinsaerospace)
-- [Portal](https://arinconline.collinsaerospace.com)
 - [Documentation](https://www.rtx.com/collinsaerospace/what-we-do/industries/commercial-aviation/ground-operations/messaging-data-exchange)
-- [Spectral Rules](rules/united-technologies-spectral-rules.yml)
-- [Vocabulary](vocabulary/united-technologies-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Blog](https://www.rtx.com/rss-feeds/news)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 30.6 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 7.9 |
+
+**Agent readiness 28.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/united-technologies/](https://apis.io/providers/united-technologies/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for United Technologies: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/united-technologies/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
